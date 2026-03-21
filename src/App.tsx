@@ -1,8 +1,11 @@
-import {Button} from "./components/ui/Button";
+import { Button } from "./components/ui/Button";
+import { PlusIcon } from "./icons/PlusIcon";
 function App() {
   return (
     <>
-    <Button variant="primary" size="md" onClick={} text/>
+      <Button startIcon={<PlusIcon/>} size="sm" variant="primary" text="share"/>
+      <Button size="md" variant="secondary" text="Add Content"/>
+      <Button size="lg" variant="secondary" text="Add Content"/>
     </>
   );
 }

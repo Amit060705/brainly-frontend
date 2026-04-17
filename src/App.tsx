@@ -1,11 +1,18 @@
-import { Button } from "./components/ui/Button";
-import { PlusIcon } from "./icons/PlusIcon";
+import { Dashboard } from "./pages/dashboard";
+import { Signup } from "./pages/Signup";
+import { Signin } from "./pages/Signin";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 function App() {
   return (
     <>
-      <Button startIcon={<PlusIcon/>} size="sm" variant="primary" text="share"/>
-      <Button size="md" variant="secondary" text="Add Content"/>
-      <Button size="lg" variant="secondary" text="Add Content"/>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/signup" element={<Signup/>}/>
+          <Route path="/signin" element={<Signin/>}/>
+          <Route path="/dashboard" element={<Dashboard/>}/>
+          {/* <Route path="/brain/:hash" element={<Dashboard/>}/> */}
+        </Routes>
+      </BrowserRouter>
     </>
   );
 }

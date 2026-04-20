@@ -1,10 +1,12 @@
+import { BinIcon } from "../icons/Bin";
 import { ShareIcon } from "../icons/ShareIcon";
 interface CardProps {
     title: string;
     link: string;
     type: "twitter" | "youtube";
+    onDelete?: () => void;
 }
-export function Card({ title, link, type }: CardProps) {
+export function Card({ title, link, type, onDelete }: CardProps) {
     return <div>
         <div className="p-4 bg-white rounded-md border-gray-200 max-w-72 border min-h-48 min-w-72   ">
             <div className="flex justify-between">
@@ -20,13 +22,14 @@ export function Card({ title, link, type }: CardProps) {
                             <ShareIcon />
                         </a>
                     </div>
-                    <div className="text-gray-500">
-                        <ShareIcon />
-                    </div>
+                    {onDelete ? (<button onClick={onDelete} className="text-gray-500 hover:text-red-600 cursor-pointer" aria-label="Delete card">
+                        <BinIcon /></button>) : (<div className="text-gray-500">
+                            <BinIcon />
+                        </div>)}
                 </div>
             </div>
             <div className="pt-4">
-                {type === "youtube" && <iframe className="w-full" src={link.replace("watch","embed").replace("?v=","/")} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>}
+                {type === "youtube" && <iframe className="w-full" src={link.replace("watch", "embed").replace("?v=", "/")} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>}
                 {type === "twitter" && (<blockquote className="twitter-tweet"><a href={link.replace("x.com", "twitter.com")} target="_blank"></a></blockquote>)}
             </div>
         </div>

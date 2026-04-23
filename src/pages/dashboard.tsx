@@ -39,7 +39,7 @@ export function Dashboard() {
             <Button onClick={() => { setModalOpen(true) }} variant="primary" text="Add Content" startIcon={<PlusIcon />} />
             {!hash &&(<Button onClick={async () => {
               const response = await axios.post(`${BACKEND_URL}/api/v1/brain/share`, { share: true }, { headers: { "Authorization": localStorage.getItem("token") } })
-              const shareUrl = `localhost:5173/brain/${response.data.hash}`;
+              const shareUrl = `${window.location.origin}/brain/${response.data.hash}`;
               alert(shareUrl);
 
             }} variant="secondary" text="Share Brain" startIcon={<ShareIcon />} />)}
